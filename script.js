@@ -73,7 +73,7 @@ const matrixGenerator = (cardValues, size=4) => {
     cards = document.querySelectorAll(".card-container");
     cards.forEach((card) => {
         card.addEventListener("click", () => {
-            if(!card.classList.contains("matched")) {
+            if(!card.classList.contains("matched") && !card.classList.contains("flipped")) {
                 card.classList.add("flipped");
                 if(!firstCard) {
                     firstCard = card;
@@ -88,7 +88,7 @@ const matrixGenerator = (cardValues, size=4) => {
                         secondCard.classList.add("matched");
                         firstCard = false;
                         winCount += 1;
-                        if(winCount = Math.floor(cardValues.length/2)) {
+                        if(winCount == Math.floor(cardValues.length/2)) {
                             result.innerHTML = `
                                 <h2>YOU WON</h2>
                                 <h4>Moves: ${movesCount}</h4>
@@ -111,18 +111,18 @@ const matrixGenerator = (cardValues, size=4) => {
     });
 };
 
-startButton.addEventListener("click", () => {
-    movesCount = 0;
-    seconds = 0;
-    minutes = 0;
-    controls.classList.add("hide");
-    stopButton.classList.remove("hide");
-    startButton.classList.add("hide");
+    startButton.addEventListener("click", () => {
+        movesCount = 0;
+        seconds = 0;
+        minutes = 0;
+        controls.classList.add("hide");
+        stopButton.classList.remove("hide");
+        startButton.classList.add("hide");
 
-    interval = setInterval(timeGenerator, 1000);
-    moves.innerHTML = `<span>Moves:</span> ${movesCount}`;
-    initializer();
-});
+        interval = setInterval(timeGenerator, 1000);
+        moves.innerHTML = `<span>Moves:</span> ${movesCount}`;
+        initializer();
+    });
 
 stopButton.addEventListener("click",
     (stopGame = () => {
