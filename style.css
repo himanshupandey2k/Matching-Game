@@ -2,14 +2,14 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 :root {
-    --background: #181C14;
+    --background: #DAA520;
     --secondary-background: #0E46A3;
     --text: #EEEEEE; 
-    --shadow: #7A1CAC;
+    --shadow: #000;
 }
 
 body {
@@ -17,19 +17,66 @@ body {
 }
 
 .container {
+    box-sizing: content-box;
     background-color: var(--secondary-background);
-    width: 26em;
-    padding: 2.5em 3em;
+    width: 500px;
+    padding: 10px;
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
     top: 50%;
-    border-radius: 1em;
-    box-shadow: 0 1em 3em var(--shadow);
+    border-radius: 0.6em;
+    box-shadow: 0 0.9em 2.8em var(--shadow);
 }
 
 .game-container {
     position: relative;
     width: 100%;
     display: grid;
+    gap: 0.6em;
+}
+
+.card-container {
+    position: relative;
+    width: 6.25em;
+    height: 6.25em;
+    cursor: pointer;
+    padding-left: 8px;
+}
+
+.card-before, .card-after {
+    position: absolute;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid var(--background);
+    transition: transform 0.7s ease-out;
+    backface-visibility: hidden;
+}
+
+.card-before {
+    background-color: goldenrod;
+    font-size: 2.8em;
+    font-weight: 600;
+}
+
+.card-after {
+    background-color: var(--text);
+    transform: rotateY(180deg);
+}
+
+.card-container.flipped.card-before {
+    transform: rotateY('180deg');
+}
+
+.card-container.flipped.card-after {
+    transform: rotateY('0deg');
+}
+
+.image {
+    width: 30px;
+    height: 30px;
 }
